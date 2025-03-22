@@ -36,8 +36,6 @@ const Info = () => {
   const fetchImages = useCallback(async (searchQuery, page, isLoadMore = false) => {
     try {
       const { images: newImages, totalPages: pages } = await getImages(searchQuery, page);
-
-      // Filter out duplicate images
       const filteredImages = newImages.filter(img => !imageIds.has(img.id));
 
       if (filteredImages.length > 0) {
